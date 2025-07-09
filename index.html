@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Cancer Treatment and Tracking Software</title>
+    <!-- Font imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Smart Cancer Treatment</h3>
+                <p>Healthcare Management System</p>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#patient-records"><i class="fas fa-user-injured"></i> Patient Records</a>
+                    </li>
+                    <li>
+                        <a href="#doctor-assignment"><i class="fas fa-user-md"></i> Doctor Assignment</a>
+                    </li>
+                    <li>
+                        <a href="#case-counter"><i class="fas fa-clipboard-list"></i> Case Counter</a>
+                    </li>
+                    <li>
+                        <a href="#patient-engagement"><i class="fas fa-chart-line"></i> Patient Engagement</a>
+                    </li>
+                    <li>
+                        <a href="#room-management"><i class="fas fa-hospital"></i> Room Management</a>
+                    </li>
+                    <li>
+                        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <nav class="top-navbar">
+                <div class="toggle-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-menu">
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile dropdown">
+                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/40" alt="User">
+                            <span>Admin</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Admin View</a></li>
+                            <li><a class="dropdown-item" href="#">Doctor View</a></li>
+                            <li><a class="dropdown-item" href="#">Staff View</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Dashboard Overview -->
+            <div class="dashboard-overview">
+                <h2>Dashboard Overview</h2>
+                <div class="date">Today: <span id="current-date"></span></div>
+
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="card">
+                        <div class="card-icon bg-primary">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <div class="card-info">
+                            <h5>Total Patients</h5>
+                            <h3>1,248</h3>
+                            <p><span class="text-success"><i class="fas fa-arrow-up"></i> 12%</span> since last month</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon bg-success">
+                            <i class="fas fa-procedures"></i>
+                        </div>
+                        <div class="card-info">
+                            <h5>Active Treatments</h5>
+                            <h3>356</h3>
+                            <p><span class="text-success"><i class="fas fa-arrow-up"></i> 8%</span> since last month</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon bg-warning">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="card-info">
+                            <h5>Available Doctors</h5>
+                            <h3>42</h3>
+                            <p><span class="text-danger"><i class="fas fa-arrow-down"></i> 3%</span> since last month</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon bg-danger">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="card-info">
+                            <h5>Available Rooms</h5>
+                            <h3>28</h3>
+                            <p><span class="text-success"><i class="fas fa-arrow-up"></i> 5%</span> since last month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 1: Patient Records Flowchart -->
+                <section id="patient-records" class="dashboard-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-user-injured"></i> Patient Records Flowchart</h3>
+                        <div class="section-actions">
+                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-sync-alt"></i> Refresh</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i> Export</button>
+                        </div>
+                    </div>
+                    <div class="section-body">
+                        <div class="patient-flow-chart">
+                            <div class="flow-container">
+                                <div class="flow-box total-patients">
+                                    <h4>Total Incoming Patients</h4>
+                                    <div class="count">1,248</div>
+                                    <div class="icon"><i class="fas fa-users"></i></div>
+                                </div>
+                                <div class="flow-arrows">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="flow-split">
+                                    <div class="flow-box normal-checkups">
+                                        <h4>Normal Checkups</h4>
+                                        <div class="count">892</div>
+                                        <div class="icon"><i class="fas fa-stethoscope"></i></div>
+                                    </div>
+                                    <div class="flow-box serious-cases">
+                                        <h4>Serious Cases (Cancer)</h4>
+                                        <div class="count">356</div>
+                                        <div class="icon"><i class="fas fa-disease"></i></div>
+                                    </div>
+                                </div>
+                                <div class="flow-arrows serious-only">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="flow-split treatment-status">
+                                    <div class="flow-box ongoing">
+                                        <h4>Treatment Ongoing</h4>
+                                        <div class="count">289</div>
+                                        <div class="status-indicator ongoing"></div>
+                                        <div class="icon"><i class="fas fa-procedures"></i></div>
+                                    </div>
+                                    <div class="flow-box on-hold">
+                                        <h4>Treatment On Hold</h4>
+                                        <div class="count">67</div>
+                                        <div class="status-indicator on-hold"></div>
+                                        <div class="icon"><i class="fas fa-pause-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color bg-success"></span>
+                                    <span>Ongoing Treatment</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color bg-danger"></span>
+                                    <span>On Hold/Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Doctor Assignment Overview -->
+                <section id="doctor-assignment" class="dashboard-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-user-md"></i> Doctor Assignment Overview</h3>
+                        <div class="section-actions">
+                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-filter"></i> Filter</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i> Export</button>
+                        </div>
+                    </div>
+                    <div class="section-body">
+                        <div class="doctor-assignment-cards">
+                            <div class="doctor-category senior">
+                                <div class="category-header">
+                                    <h4>Senior Doctors</h4>
+                                    <span class="badge bg-primary">24 Active</span>
+                                </div>
+                                <div class="doctor-list">
+                                    <div class="doctor-card">
+                                        <div class="doctor-info">
+                                            <img src="https://via.placeholder.com/50" alt="Doctor">
+                                            <div>
+                                                <h5>Dr. Sarah Johnson</h5>
+                                                <p>Oncology Specialist</p>
+                                                <div class="doctor-stats">
+                                                    <span><i class="fas fa-star"></i> 4.9</span>
+                                                    <span><i class="fas fa-calendar-check"></i> 98%</span>
+                                                    <span><i class="fas fa-user-check"></i> 156</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="doctor-availability available">
+                                            <i class="fas fa-circle"></i> Available
+                                        </div>
+                                        <div class="doctor-actions">
+                                            <button class="btn btn-sm btn-primary">Assign</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Profile</button>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-info">
+                                            <img src="https://via.placeholder.com/50" alt="Doctor">
+                                            <div>
+                                                <h5>Dr. Michael Chen</h5>
+                                                <p>Radiation Oncologist</p>
+                                                <div class="doctor-stats">
+                                                    <span><i class="fas fa-star"></i> 4.8</span>
+                                                    <span><i class="fas fa-calendar-check"></i> 95%</span>
+                                                    <span><i class="fas fa-user-check"></i> 142</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="doctor-availability busy">
+                                            <i class="fas fa-circle"></i> In Session
+                                        </div>
+                                        <div class="doctor-actions">
+                                            <button class="btn btn-sm btn-primary" disabled>Assign</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="view-more">
+                                    <a href="#">View all Senior Doctors <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="doctor-category junior">
+                                <div class="category-header">
+                                    <h4>Junior Doctors</h4>
+                                    <span class="badge bg-info">18 Active</span>
+                                </div>
+                                <div class="doctor-list">
+                                    <div class="doctor-card">
+                                        <div class="doctor-info">
+                                            <img src="https://via.placeholder.com/50" alt="Doctor">
+                                            <div>
+                                                <h5>Dr. Emily Rodriguez</h5>
+                                                <p>Oncology Resident</p>
+                                                <div class="doctor-stats">
+                                                    <span><i class="fas fa-star"></i> 4.5</span>
+                                                    <span><i class="fas fa-calendar-check"></i> 92%</span>
+                                                    <span><i class="fas fa-user-check"></i> 78</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="doctor-availability available">
+                                            <i class="fas fa-circle"></i> Available
+                                        </div>
+                                        <div class="doctor-actions">
+                                            <button class="btn btn-sm btn-primary">Assign</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Profile</button>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-card">
+                                        <div class="doctor-info">
+                                            <img src="https://via.placeholder.com/50" alt="Doctor">
+                                            <div>
+                                                <h5>Dr. James Wilson</h5>
+                                                <p>Medical Oncologist</p>
+                                                <div class="doctor-stats">
+                                                    <span><i class="fas fa-star"></i> 4.3</span>
+                                                    <span><i class="fas fa-calendar-check"></i> 90%</span>
+                                                    <span><i class="fas fa-user-check"></i> 64</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="doctor-availability available">
+                                            <i class="fas fa-circle"></i> Available
+                                        </div>
+                                        <div class="doctor-actions">
+                                            <button class="btn btn-sm btn-primary">Assign</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Profile</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="view-more">
+                                    <a href="#">View all Junior Doctors <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="auto-assignment-panel">
+                            <h4>Auto-Assignment Recommendations</h4>
+                            <div class="recommendation-list">
+                                <div class="recommendation-item">
+                                    <div class="patient-info">
+                                        <span class="patient-id">P-1024</span>
+                                        <span class="patient-name">John Smith</span>
+                                        <span class="patient-condition">Lung Cancer (Stage 2)</span>
+                                    </div>
+                                    <div class="recommended-doctor">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Dr. Sarah Johnson</span>
+                                        <div class="recommendation-reason">
+                                            <span class="badge bg-success">Experience: 15+ years</span>
+                                            <span class="badge bg-info">Success Rate: 94%</span>
+                                            <span class="badge bg-warning">Available Today</span>
+                                        </div>
+                                    </div>
+                                    <div class="recommendation-actions">
+                                        <button class="btn btn-sm btn-success">Accept</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Change</button>
+                                    </div>
+                                </div>
+                                <div class="recommendation-item">
+                                    <div class="patient-info">
+                                        <span class="patient-id">P-1036</span>
+                                        <span class="patient-name">Maria Garcia</span>
+                                        <span class="patient-condition">Breast Cancer (Stage 1)</span>
+                                    </div>
+                                    <div class="recommended-doctor">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Dr. Emily Rodriguez</span>
+                                        <div class="recommendation-reason">
+                                            <span class="badge bg-success">Specialization Match</span>
+                                            <span class="badge bg-info">Success Rate: 91%</span>
+                                            <span class="badge bg-warning">Available Tomorrow</span>
+                                        </div>
+                                    </div>
+                                    <div class="recommendation-actions">
+                                        <button class="btn btn-sm btn-success">Accept</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Change</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Patient Case Counter Panel -->
+                <section id="case-counter" class="dashboard-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-clipboard-list"></i> Patient Case Counter</h3>
+                        <div class="section-actions">
+                            <div class="search-filter">
+                                <input type="text" placeholder="Search by disease or doctor...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-filter"></i> Filter</button>
+                        </div>
+                    </div>
+                    <div class="section-body">
+                        <div class="case-counter-tabs">
+                            <ul class="nav nav-tabs" id="caseCounterTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="active-cases-tab" data-bs-toggle="tab" data-bs-target="#active-cases" type="button" role="tab">Active Cases (356)</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="past-cases-tab" data-bs-toggle="tab" data-bs-target="#past-cases" type="button" role="tab">Past Cases (892)</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="caseCounterTabContent">
+                                <div class="tab-pane fade show active" id="active-cases" role="tabpanel">
+                                    <div class="case-table-container">
+                                        <table class="table case-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Case ID</th>
+                                                    <th>Patient</th>
+                                                    <th>Disease</th>
+                                                    <th>Doctor</th>
+                                                    <th>Treatment</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>C-10245</td>
+                                                    <td>John Smith</td>
+                                                    <td>Lung Cancer (Stage 2)</td>
+                                                    <td>Dr. Sarah Johnson</td>
+                                                    <td>Chemotherapy + Radiation</td>
+                                                    <td><span class="badge bg-success">Ongoing</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>C-10246</td>
+                                                    <td>Maria Garcia</td>
+                                                    <td>Breast Cancer (Stage 1)</td>
+                                                    <td>Dr. Emily Rodriguez</td>
+                                                    <td>Surgery + Radiation</td>
+                                                    <td><span class="badge bg-warning">Pending Tests</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>C-10247</td>
+                                                    <td>Robert Johnson</td>
+                                                    <td>Prostate Cancer (Stage 3)</td>
+                                                    <td>Dr. Michael Chen</td>
+                                                    <td>Hormone Therapy</td>
+                                                    <td><span class="badge bg-success">Ongoing</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>C-10248</td>
+                                                    <td>Jennifer Lee</td>
+                                                    <td>Thyroid Cancer (Stage 1)</td>
+                                                    <td>Dr. James Wilson</td>
+                                                    <td>Surgery</td>
+                                                    <td><span class="badge bg-danger">On Hold</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="pagination-container">
+                                        <nav>
+                                            <ul class="pagination">
+                                                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="past-cases" role="tabpanel">
+                                    <!-- Similar structure as active cases but with past case data -->
+                                    <div class="case-table-container">
+                                        <p class="text-center py-4">Past cases data will be loaded here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Old Patient Engagement Panel -->
+                <section id="patient-engagement" class="dashboard-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-chart-line"></i> Patient Engagement Analytics</h3>
+                        <div class="section-actions">
+                            <div class="date-range-picker">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last 30 Days</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i> Export</button>
+                        </div>
+                    </div>
+                    <div class="section-body">
+                        <div class="engagement-stats-cards">
+                            <div class="stat-card">
+                                <div class="stat-value">428</div>
+                                <div class="stat-label">Active Former Patients</div>
+                                <div class="stat-change positive"><i class="fas fa-arrow-up"></i> 12%</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">156</div>
+                                <div class="stat-label">Medication Refills</div>
+                                <div class="stat-change positive"><i class="fas fa-arrow-up"></i> 8%</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">89</div>
+                                <div class="stat-label">Follow-up Visits</div>
+                                <div class="stat-change positive"><i class="fas fa-arrow-up"></i> 5%</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">214</div>
+                                <div class="stat-label">Lost Contact</div>
+                                <div class="stat-change negative"><i class="fas fa-arrow-down"></i> 3%</div>
+                            </div>
+                        </div>
+                        <div class="engagement-charts">
+                            <div class="chart-container">
+                                <h4>Monthly Patient Return Rate</h4>
+                                <canvas id="returnRateChart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <h4>Revenue Impact from Returning Patients</h4>
+                                <canvas id="revenueImpactChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="engagement-actions">
+                            <div class="action-card">
+                                <div class="action-icon bg-primary">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="action-info">
+                                    <h5>Email Campaign</h5>
+                                    <p>Send follow-up emails to 214 inactive patients</p>
+                                </div>
+                                <button class="btn btn-primary">Schedule</button>
+                            </div>
+                            <div class="action-card">
+                                <div class="action-icon bg-success">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="action-info">
+                                    <h5>Call Campaign</h5>
+                                    <p>Call 86 high-priority inactive patients</p>
+                                </div>
+                                <button class="btn btn-success">Schedule</button>
+                            </div>
+                            <div class="action-card">
+                                <div class="action-icon bg-info">
+                                    <i class="fas fa-percent"></i>
+                                </div>
+                                <div class="action-info">
+                                    <h5>Discount Offer</h5>
+                                    <p>Send 10% discount to 128 patients due for checkup</p>
+                                </div>
+                                <button class="btn btn-info">Schedule</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Hospital Maintenance & Room Management -->
+                <section id="room-management" class="dashboard-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-hospital"></i> Room Management</h3>
+                        <div class="section-actions">
+                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-filter"></i> Filter</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                    <div class="section-body">
+                        <div class="room-status-summary">
+                            <div class="status-card">
+                                <div class="status-icon bg-success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="status-info">
+                                    <h5>Available</h5>
+                                    <div class="status-count">28</div>
+                                </div>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-icon bg-danger">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="status-info">
+                                    <h5>Occupied</h5>
+                                    <div class="status-count">42</div>
+                                </div>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-icon bg-warning">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="status-info">
+                                    <h5>Maintenance</h5>
+                                    <div class="status-count">8</div>
+                                </div>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-icon bg-info">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="status-info">
+                                    <h5>Reserved</h5>
+                                    <div class="status-count">12</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="room-type-distribution">
+                            <h4>Room Distribution by Type</h4>
+                            <div class="distribution-chart-container">
+                                <canvas id="roomDistributionChart"></canvas>
+                            </div>
+                            <div class="distribution-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color bg-primary"></span>
+                                    <span>ICU (15)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color bg-success"></span>
+                                    <span>Private (25)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color bg-warning"></span>
+                                    <span>General (40)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color bg-danger"></span>
+                                    <span>Isolation (10)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="room-map-container">
+                            <h4>Hospital Room Map</h4>
+                            <div class="floor-selector">
+                                <button class="btn btn-sm btn-outline-primary active">Floor 1</button>
+                                <button class="btn btn-sm btn-outline-primary">Floor 2</button>
+                                <button class="btn btn-sm btn-outline-primary">Floor 3</button>
+                            </div>
+                            <div class="room-map">
+                                <!-- Room map grid will be rendered here -->
+                                <div class="room-grid">
+                                    <!-- This would be dynamically generated, showing a sample here -->
+                                    <div class="room available" data-room-id="101">
+                                        <div class="room-number">101</div>
+                                        <div class="room-type">Private</div>
+                                    </div>
+                                    <div class="room occupied" data-room-id="102">
+                                        <div class="room-number">102</div>
+                                        <div class="room-type">ICU</div>
+                                        <div class="patient-info">P-1024</div>
+                                    </div>
+                                    <div class="room maintenance" data-room-id="103">
+                                        <div class="room-number">103</div>
+                                        <div class="room-type">General</div>
+                                        <div class="maintenance-info"><i class="fas fa-tools"></i></div>
+                                    </div>
+                                    <!-- More rooms would be here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="maintenance-schedule">
+                            <h4>Upcoming Maintenance</h4>
+                            <table class="table maintenance-table">
+                                <thead>
+                                    <tr>
+                                        <th>Room</th>
+                                        <th>Type</th>
+                                        <th>Maintenance Type</th>
+                                        <th>Scheduled Date</th>
+                                        <th>Duration</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>103</td>
+                                        <td>General</td>
+                                        <td>Plumbing Repair</td>
+                                        <td>Aug 15, 2023</td>
+                                        <td>2 days</td>
+                                        <td><span class="badge bg-warning">In Progress</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>205</td>
+                                        <td>ICU</td>
+                                        <td>Equipment Upgrade</td>
+                                        <td>Aug 18, 2023</td>
+                                        <td>3 days</td>
+                                        <td><span class="badge bg-info">Scheduled</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>310</td>
+                                        <td>Private</td>
+                                        <td>Painting</td>
+                                        <td>Aug 20, 2023</td>
+                                        <td>1 day</td>
+                                        <td><span class="badge bg-info">Scheduled</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="js/dashboard.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/darkmode.js"></script>
+</body>
+</html>
